@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>learn-pgSQL-DayTwo | Just it</title>
+    <title>pg 表空间 | Just it</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     
@@ -80,12 +80,27 @@
 	
   
     <h1 class="post-title" itemprop="name">
-      learn-pgSQL-DayTwo
+      pg 表空间
     </h1>
   
 
 	<div class='post-body mb'>
-		<h3 id="第二天学习-pgSQL"><a href="#第二天学习-pgSQL" class="headerlink" title="第二天学习 pgSQL"></a>第二天学习 pgSQL</h3><h4 id="PS-今天因为不熟悉-sql，以至于使用了create-table-hi-忘记后面的数据结构以至于晕了很久"><a href="#PS-今天因为不熟悉-sql，以至于使用了create-table-hi-忘记后面的数据结构以至于晕了很久" class="headerlink" title="PS:今天因为不熟悉 sql，以至于使用了create table hi; 忘记后面的数据结构以至于晕了很久~"></a>PS:今天因为不熟悉 sql，以至于使用了<code>create table hi;</code> 忘记后面的数据结构以至于晕了很久~</h4><p>周五，奖励自己晚上不学了，周末继续补吧！😁</p>
+		<h3 id="第二天学习-pgSQL"><a href="#第二天学习-pgSQL" class="headerlink" title="第二天学习 pgSQL"></a>第二天学习 pgSQL</h3><h4 id="PS-今天因为不熟悉-sql，以至于使用了create-table-hi-忘记后面的数据结构以至于晕了很久"><a href="#PS-今天因为不熟悉-sql，以至于使用了create-table-hi-忘记后面的数据结构以至于晕了很久" class="headerlink" title="PS:今天因为不熟悉 sql，以至于使用了create table hi; 忘记后面的数据结构以至于晕了很久~"></a>PS:今天因为不熟悉 sql，以至于使用了<code>create table hi;</code> 忘记后面的数据结构以至于晕了很久~</h4><p>周五，奖励自己晚上不学了，周末继续补吧！😁 </p>
+<p>———————— 哈哈，我来补作业了 2020-07-11 ————————</p>
+<p>看了表空间，并不是很理解是什么意思，暂且先记录下来看的。<br>首先表空间的定义：表等对象只等一个存储的目录。<br>###因为 sql 并不区分大小写，个人习惯便操作时容易使用小写，所以可能分不太清 关键字 记录时还是使用大写吧</p>
+<pre><code class="postgresql">eq
+创建表空间 :  CREATE TABLESPACE hello, hello 为表空间名称
+    其也可以使用 OWNER,LOCATION,WITH 关键字来分别设置表空间的所属用户名称,
+    存放的路径,以及表空间的一些参数(seq_page_cost,random_page_cost,effective_io_concurrency 允许设置)
+修改表空间 : ALTER TABLESPACE old_name RENAME TO new_name 更新表空间名称
+           ALTER TABLESPACE old_owner OWNER TO new_owner 更新表空间的所属用户
+           ALTER TABLESPACE name SET 设置表空间参数
+           ALTER TABLESPACE name RESET 设置表空间参数
+ALTER TABLESPACE  是修改表空间的特定的语法
+删除表空间 : DROP TABLESPACE [IF EXISTS] name 删除表空间
+    其中 可以使用 IF EXISTS 判断,表空间存在时才删除,不存在时直接跳过
+    且需要注意的是,如果表空间的数据没有清空,执行语句会报错,只有表空间的所属用户和超级用户才能删除</code></pre>
+<p>虽然语法可以记住，但还是需要去 看一些介绍表空间的文章，再续吧！</p>
 
 	</div>
 	<div class="meta split">
