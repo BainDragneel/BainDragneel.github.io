@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/13/learn-pgSQL-DayThree/" itemprop="url">learn-pgSQL-DayThree</a></h1>
+                <a class="post-title-link" href="/2020/07/13/learn-pgSQL-DayThree/" itemprop="url">pg 数据库及表</a></h1>
         
 
         <div class="post-meta">
@@ -359,9 +359,12 @@
 <p>pg数据库将<code>CREATE DATABASE</code>封装成了一个程序：createdb</p>
 <p>修改数据库</p>
 <figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE name [[WITH ] option[...]], 修改数据库</span><br><span class="line">其中 <span class="keyword">option</span> 中可以修改 数据库所属用户，数据库名称等信息。</span><br></pre></td></tr></table></figure>
-
 <p>删除数据库</p>
 <figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Drop</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">EXISTS</span> ] <span class="type">name</span>, 使用方法同表空间</span><br></pre></td></tr></table></figure>
+<p>创建表</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="type">name</span>(结构)</span><br><span class="line">但是其分为三种:</span><br><span class="line"><span class="number">1</span>、创建表常规语法</span><br><span class="line"><span class="number">2</span>、根据类型名创建表</span><br><span class="line"><span class="number">3</span>、用于创建表分区的分区</span><br></pre></td></tr></table></figure>
+<p>创建表中可以使用一些约束字段：</p>
+<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CHECK</span> 校验，存入数据时会去校验所设置的内容，其中也可以用数据结构中两个字段相互比较等。</span><br><span class="line"><span class="keyword">NOT</span> <span class="keyword">NULL</span> 非空约束，一个字段不能设置为 <span class="keyword">null</span></span><br><span class="line"><span class="keyword">UNIQUE</span> 唯一约束, 唯一值</span><br></pre></td></tr></table></figure>
           
         
       
