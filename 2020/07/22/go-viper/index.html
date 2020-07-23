@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="pgSQL," />
+  <meta name="keywords" content="go viper," />
 
 
 
@@ -79,16 +79,16 @@
 
 
 
-<meta name="description" content="今天看 数据库 的相关内容 12CREATE DATABASE name, 创建数据库, name 为数据库名称其中也可以通过设置修改一些基础参数。 pg数据库将CREATE DATABASE封装成了一个程序：createdb 修改数据库 12ALTER DATABASE name [[WITH ] option[...]], 修改数据库其中 option 中可以修改 数据库所属用户，数据库名称等">
+<meta name="description" content="今天遇到了一个问题，在 go 编程过程中使用了 yml 文件用来做静态 config 变量存储，使用了 viper 来获取其中的值。 1234567redeemConfig:- key: key1  name: name1  percentage: percentage1- key: key2  name: name2  percentage: percentage2 有一个变量我设置成这样，接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pg 数据库及表">
-<meta property="og:url" content="http://yoursite.com/2020/07/13/learn-pgSQL-DayThree/index.html">
+<meta property="og:title" content="viper提升">
+<meta property="og:url" content="http://yoursite.com/2020/07/22/go-viper/index.html">
 <meta property="og:site_name" content="Just it">
-<meta property="og:description" content="今天看 数据库 的相关内容 12CREATE DATABASE name, 创建数据库, name 为数据库名称其中也可以通过设置修改一些基础参数。 pg数据库将CREATE DATABASE封装成了一个程序：createdb 修改数据库 12ALTER DATABASE name [[WITH ] option[...]], 修改数据库其中 option 中可以修改 数据库所属用户，数据库名称等">
-<meta property="article:published_time" content="2020-07-13T12:31:48.000Z">
-<meta property="article:modified_time" content="2020-07-13T13:00:45.031Z">
+<meta property="og:description" content="今天遇到了一个问题，在 go 编程过程中使用了 yml 文件用来做静态 config 变量存储，使用了 viper 来获取其中的值。 1234567redeemConfig:- key: key1  name: name1  percentage: percentage1- key: key2  name: name2  percentage: percentage2 有一个变量我设置成这样，接口">
+<meta property="article:published_time" content="2020-07-22T14:19:42.000Z">
+<meta property="article:modified_time" content="2020-07-23T02:03:08.489Z">
 <meta property="article:author" content="Baith">
-<meta property="article:tag" content="pgSQL">
+<meta property="article:tag" content="go viper">
 <meta name="twitter:card" content="summary">
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/07/13/learn-pgSQL-DayThree/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/07/22/go-viper/"/>
 
 
 
 
 
-  <title>pg 数据库及表 | Just it</title>
+  <title>viper提升 | Just it</title>
   
 
 
@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/13/learn-pgSQL-DayThree/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/22/go-viper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Baith">
@@ -269,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">pg 数据库及表</h1>
+          <h1 class="post-title" itemprop="name headline">viper提升</h1>
         
 
         <div class="post-meta">
@@ -281,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-13T20:31:48+08:00">
-                2020-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-22T22:19:42+08:00">
+                2020-07-22
               </time>
             
 
@@ -304,8 +304,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/pgSQL/" itemprop="url" rel="index">
-                    <span itemprop="name">pgSQL</span>
+                  <a href="/categories/go-viper/" itemprop="url" rel="index">
+                    <span itemprop="name">go viper</span>
                   </a>
                 </span>
 
@@ -322,9 +322,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/07/13/learn-pgSQL-DayThree/#comments" itemprop="discussionUrl">
+                <a href="/2020/07/22/go-viper/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2020/07/13/learn-pgSQL-DayThree/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2020/07/22/go-viper/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,17 +352,12 @@
       
 
       
-        <p>今天看 数据库 的相关内容</p>
-<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="type">name</span>, 创建数据库, <span class="type">name</span> 为数据库名称</span><br><span class="line">其中也可以通过设置修改一些基础参数。</span><br></pre></td></tr></table></figure>
-<p>pg数据库将<code>CREATE DATABASE</code>封装成了一个程序：createdb</p>
-<p>修改数据库</p>
-<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER DATABASE name [[WITH ] option[...]], 修改数据库</span><br><span class="line">其中 <span class="keyword">option</span> 中可以修改 数据库所属用户，数据库名称等信息。</span><br></pre></td></tr></table></figure>
-<p>删除数据库</p>
-<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Drop</span> <span class="keyword">DATABASE</span> [<span class="keyword">IF</span> <span class="keyword">EXISTS</span> ] <span class="type">name</span>, 使用方法同表空间</span><br></pre></td></tr></table></figure>
-<p>创建表</p>
-<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="type">name</span>(结构)</span><br><span class="line">但是其分为三种:</span><br><span class="line"><span class="number">1</span>、创建表常规语法</span><br><span class="line"><span class="number">2</span>、根据类型名创建表</span><br><span class="line"><span class="number">3</span>、用于创建表分区的分区</span><br></pre></td></tr></table></figure>
-<p>创建表中可以使用一些约束字段：</p>
-<figure class="highlight postgresql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CHECK</span> 校验，存入数据时会去校验所设置的内容，其中也可以用数据结构中两个字段相互比较等。</span><br><span class="line"><span class="keyword">NOT</span> <span class="keyword">NULL</span> 非空约束，一个字段不能设置为 <span class="keyword">null</span></span><br><span class="line"><span class="keyword">UNIQUE</span> 唯一约束, 唯一值</span><br></pre></td></tr></table></figure>
+        <p>今天遇到了一个问题，在 go 编程过程中使用了 yml 文件用来做静态 config 变量存储，使用了 viper 来获取其中的值。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">redeemConfig:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">key:</span> <span class="string">key1</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">name1</span></span><br><span class="line">  <span class="attr">percentage:</span> <span class="string">percentage1</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">key:</span> <span class="string">key2</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">name2</span></span><br><span class="line">  <span class="attr">percentage:</span> <span class="string">percentage2</span></span><br></pre></td></tr></table></figure>
+<p>有一个变量我设置成这样，接口直接返回变量：期望返回时 body 可以是这种类似于 [{},{}] 的格式，<br>但是当我去使用 <code>viper.Get(&quot;redeemConfig&quot;)</code>时，因为返回的是一个 <code>interface{}</code>，所以耗费了很长时间都毫无头绪！<br>最好直接将错误信息直接搜索了 google，使用了下面的方法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> redeemConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">    Key        <span class="keyword">string</span> <span class="string">`json:"key"`</span></span><br><span class="line">    Name       <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">    Percentage <span class="keyword">int32</span>  <span class="string">`json:"percentage"`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> redeemConfigList []RedeemConfig</span><br><span class="line">err :=viper.UnmarshalKey(<span class="string">"redeemConfig"</span>,&amp;redeemConfigList)</span><br><span class="line">fmt.Println(err)</span><br><span class="line">fmt.Println(errredeemConfigList</span><br></pre></td></tr></table></figure>
+<p>成功将其输出！</p>
+
       
     </div>
     
@@ -379,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pgSQL/" rel="tag"># pgSQL</a>
+            <a href="/tags/go-viper/" rel="tag"># go viper</a>
           
         </div>
       
@@ -392,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/07/10/learn-pgSQL-DayTwo/" rel="next" title="pg 表空间">
-                <i class="fa fa-chevron-left"></i> pg 表空间
+              <a href="/2020/07/13/learn-pgSQL-DayThree/" rel="next" title="pg 数据库及表">
+                <i class="fa fa-chevron-left"></i> pg 数据库及表
               </a>
             
           </div>
@@ -401,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/22/go-viper/" rel="prev" title="viper提升">
-                viper提升 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -684,9 +675,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2020/07/13/learn-pgSQL-DayThree/';
-          this.page.identifier = '2020/07/13/learn-pgSQL-DayThree/';
-          this.page.title = 'pg 数据库及表';
+          this.page.url = 'http://yoursite.com/2020/07/22/go-viper/';
+          this.page.identifier = '2020/07/22/go-viper/';
+          this.page.title = 'viper提升';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://baith.disqus.com/embed.js';
