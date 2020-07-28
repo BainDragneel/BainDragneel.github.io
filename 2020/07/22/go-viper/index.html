@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="go viper," />
+  <meta name="keywords" content="go-viper," />
 
 
 
@@ -86,9 +86,9 @@
 <meta property="og:site_name" content="Just it">
 <meta property="og:description" content="今天遇到了一个问题，在 go 编程过程中使用了 yml 文件用来做静态 config 变量存储，使用了 viper 来获取其中的值。 1234567redeemConfig:- key: key1  name: name1  percentage: percentage1- key: key2  name: name2  percentage: percentage2 有一个变量我设置成这样，接口">
 <meta property="article:published_time" content="2020-07-22T14:19:42.000Z">
-<meta property="article:modified_time" content="2020-07-23T02:03:08.489Z">
+<meta property="article:modified_time" content="2020-07-27T09:32:32.945Z">
 <meta property="article:author" content="Baith">
-<meta property="article:tag" content="go viper">
+<meta property="article:tag" content="go-viper">
 <meta name="twitter:card" content="summary">
 
 
@@ -305,7 +305,7 @@
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/go-viper/" itemprop="url" rel="index">
-                    <span itemprop="name">go viper</span>
+                    <span itemprop="name">go-viper</span>
                   </a>
                 </span>
 
@@ -355,8 +355,8 @@
         <p>今天遇到了一个问题，在 go 编程过程中使用了 yml 文件用来做静态 config 变量存储，使用了 viper 来获取其中的值。</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">redeemConfig:</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">key:</span> <span class="string">key1</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">name1</span></span><br><span class="line">  <span class="attr">percentage:</span> <span class="string">percentage1</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">key:</span> <span class="string">key2</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">name2</span></span><br><span class="line">  <span class="attr">percentage:</span> <span class="string">percentage2</span></span><br></pre></td></tr></table></figure>
 <p>有一个变量我设置成这样，接口直接返回变量：期望返回时 body 可以是这种类似于 [{},{}] 的格式，<br>但是当我去使用 <code>viper.Get(&quot;redeemConfig&quot;)</code>时，因为返回的是一个 <code>interface{}</code>，所以耗费了很长时间都毫无头绪！<br>最好直接将错误信息直接搜索了 google，使用了下面的方法：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> redeemConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">    Key        <span class="keyword">string</span> <span class="string">`json:"key"`</span></span><br><span class="line">    Name       <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">    Percentage <span class="keyword">int32</span>  <span class="string">`json:"percentage"`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> redeemConfigList []RedeemConfig</span><br><span class="line">err :=viper.UnmarshalKey(<span class="string">"redeemConfig"</span>,&amp;redeemConfigList)</span><br><span class="line">fmt.Println(err)</span><br><span class="line">fmt.Println(errredeemConfigList</span><br></pre></td></tr></table></figure>
-<p>成功将其输出！</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> redeemConfig <span class="keyword">struct</span> &#123;</span><br><span class="line">    Key        <span class="keyword">string</span> <span class="string">`json:"key"`</span></span><br><span class="line">    Name       <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">    Percentage <span class="keyword">int32</span>  <span class="string">`json:"percentage"`</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> redeemConfigList []RedeemConfig</span><br><span class="line">err :=viper.UnmarshalKey(<span class="string">"redeemConfig"</span>,&amp;redeemConfigList)</span><br><span class="line">fmt.Println(err)</span><br><span class="line">fmt.Println(errredeemConfigList)</span><br></pre></td></tr></table></figure>
+<p>成功将其输出！<br>PS:链接: <a href="https://stackoverflow.com/questions/45120927/how-to-load-a-list-of-maps-with-viper" target="_blank" rel="noopener">https://stackoverflow.com/questions/45120927/how-to-load-a-list-of-maps-with-viper</a></p>
 
       
     </div>
@@ -374,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/go-viper/" rel="tag"># go viper</a>
+            <a href="/tags/go-viper/" rel="tag"># go-viper</a>
           
         </div>
       
@@ -396,6 +396,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/27/go-decimal/" rel="prev" title="go 的 decimal 踩坑">
+                go 的 decimal 踩坑 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -473,7 +477,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -484,7 +488,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -495,7 +499,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
