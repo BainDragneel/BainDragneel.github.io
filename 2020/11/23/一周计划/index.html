@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Just it">
 <meta property="og:description" content="计划极客时间今天公司福利极客时间的预约课程下来了，现在规划一下学习时间，在晚上 8 点提醒开始后，学习极客时间的内容，并将学到的东西转移到本博客中用作记录，因此可能会一天一篇也可能每天一点篇幅多了发布。 周一学习的第一讲，先记录下相关的知识点： 123GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径GOPATH：若干工作区目录的路径。是我们自己定义的工作空间GOBIN：GO">
 <meta property="article:published_time" content="2020-11-23T06:49:07.000Z">
-<meta property="article:modified_time" content="2020-11-23T12:17:35.392Z">
+<meta property="article:modified_time" content="2020-11-24T12:29:05.738Z">
 <meta property="article:author" content="Baith">
 <meta property="article:tag" content="计划">
 <meta name="twitter:card" content="summary">
@@ -355,7 +355,11 @@
         <h1 id="计划"><a href="#计划" class="headerlink" title="计划"></a>计划</h1><h4 id="极客时间"><a href="#极客时间" class="headerlink" title="极客时间"></a>极客时间</h4><p>今天公司福利极客时间的预约课程下来了，<br>现在规划一下学习时间，在晚上 8 点提醒开始后，学习极客时间的内容，<br>并将学到的东西转移到本博客中用作记录，因此可能会一天一篇也可能每天一点篇幅多了发布。</p>
 <h4 id="周一"><a href="#周一" class="headerlink" title="周一"></a>周一</h4><p>学习的第一讲，先记录下相关的知识点：</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GOROOT：Go 语言安装根目录的路径，也就是 GO 语言的安装路径</span><br><span class="line">GOPATH：若干工作区目录的路径。是我们自己定义的工作空间</span><br><span class="line">GOBIN：GO 程序生成的可执行文件（<span class="built_in">executable</span> <span class="keyword">file</span>）的路径</span><br></pre></td></tr></table></figure>
-<p>设置 GOPATH 的意义在于，可以将其当做是一个或多个工作区，每一个工作区都可以去防止 go 的源码文件以及安装后的归档文件，和可执行文件。<br><code>归档文件：在Linux下就是扩展名是.a的文件，也就是archive文件。写过C程序的朋友都知道，这是程序编译后生成的静态库文件。</code><br>一般来说，go 语言的源码文件都会被存放到环境变量 GOPATH 包含的某一个目录中 src 目录下<br>思考题：<br>Go 语言在多个工作区中查找依赖包的时候是以怎样的顺序进行的？如果在多个工作区中都存在导入路径相同的代码包会产生冲突吗？<br>会先查询 GOROOT 目录，没有找到依赖包的话会去工作区查找对应的包，且是按照先后顺序查找，查到之后不在查找。查找不到报错。<br>因此 多个工作区中都存在导入路径相同的代码包 不会冲突</p>
+<p>设置 GOPATH 的意义在于，可以将其当做是一个或多个工作区，每一个工作区都可以去防止 go 的源码文件以及安装后的归档文件，和可执行文件。<br><code>归档文件：在Linux下就是扩展名是.a的文件，也就是archive文件。写过C程序的朋友都知道，这是程序编译后生成的静态库文件。</code><br>一般来说，go 语言的源码文件都会被存放到环境变量 GOPATH 包含的某一个目录中 src 目录下  </p>
+<h5 id="思考题："><a href="#思考题：" class="headerlink" title="思考题："></a>思考题：</h5><p>Go 语言在多个工作区中查找依赖包的时候是以怎样的顺序进行的？如果在多个工作区中都存在导入路径相同的代码包会产生冲突吗？<br>会先查询 GOROOT 目录，没有找到依赖包的话会去工作区查找对应的包，且是按照先后顺序查找，查到之后不在查找。查找不到报错。<br>因此 多个工作区中都存在导入路径相同的代码包 不会冲突</p>
+<h4 id="周二"><a href="#周二" class="headerlink" title="周二"></a>周二</h4><p>学习的第二讲，先记录下相关的知识点：<br>主要讲解了 go 中的 flag 包，专门用于接收并解析命令参数：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line"> <span class="string">"flag"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">flag.StringVar(&amp;name, <span class="string">"name"</span>, <span class="string">"everyone"</span>, <span class="string">"The greeting object."</span>)</span><br><span class="line"><span class="comment">//第一个参数，用来存储命令参数值的地址，第二个参数指定命令参数的名称，第三个参数指的默认值，第四个参数作为说明</span></span><br><span class="line"><span class="keyword">var</span> name = flag.String(<span class="string">"name"</span>, <span class="string">"everyone"</span>, <span class="string">"The greeting object."</span>)</span><br><span class="line"><span class="comment">//flag.String 会返回一个已经分配好的存储命令参数值的地址</span></span><br><span class="line"><span class="comment">//flag.Parse 用来真正的解析命令参数,并把值赋给相应的变量</span></span><br><span class="line"><span class="comment">//还有可以使用 flag.Usage 重新赋值，</span></span><br></pre></td></tr></table></figure>
+
 <h4 id="to自己"><a href="#to自己" class="headerlink" title="to自己"></a>to自己</h4><p>希望你可以坚持下来，积累知识点!</p>
 
       
@@ -537,7 +541,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计划"><span class="nav-number">1.</span> <span class="nav-text">计划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极客时间"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">极客时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周一"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">周一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#to自己"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">to自己</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#计划"><span class="nav-number">1.</span> <span class="nav-text">计划</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#极客时间"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">极客时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周一"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">周一</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#思考题："><span class="nav-number">1.0.0.2.1.</span> <span class="nav-text">思考题：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#周二"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">周二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#to自己"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">to自己</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
