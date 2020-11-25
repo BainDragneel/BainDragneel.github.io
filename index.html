@@ -250,6 +250,160 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/24/pg%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Baith">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Just it">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/24/pg%E5%AD%A6%E4%B9%A0/" itemprop="url">pg学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-24T20:32:08+08:00">
+                2020-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/pgSQL/" itemprop="url" rel="index">
+                    <span itemprop="name">pgSQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/11/24/pg%E5%AD%A6%E4%B9%A0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/11/24/pg学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h1><h5 id="10-2-表分区："><a href="#10-2-表分区：" class="headerlink" title="10.2 表分区："></a>10.2 表分区：</h5><p>表分区是指在特定场景下把逻辑上的一个大表分裂成多个更小的物理分片，以获得性能的提升。<br>主要分为范围分区和列表分区。分区表本身不会存储任何记录。且分区也可以作为分区表创建分区<br>分区完全继承了分区表中所有字段，所以不能添加自己的任何额外字段。<br>表分区与表继承的主要区别是：可以直接将数据记录插入到分区表中，而不需要预先判断每条记录究竟该插入到哪个分区中，<br>记录被系统自动路由到合适的分区中。<br>目前没有提供在分区表上创建索引，自动同步到分区上面，只能做到在每个分区上单独创建索引。<br>分区表上创建主键约束、外键约束也是不允许的。<br>约束排除：针对表分区的一项查询优化技术，不管哪种分区都可以使用。<br>原理是：检查每个分区的 CHECK 的约束条件，试图证明该分区不需要扫描。 constraint_exclusion</p>
+<h5 id="14-1"><a href="#14-1" class="headerlink" title="14.1"></a>14.1</h5><p>事务：原子性，一致性，隔离性，持久性。<br>脏读、不可重复读、幻读<br>pg提供了四种隔离机制：读未提交，读已提交，可重复读，串行化。<br>串行化是级别最高的隔离机制， pg 默认的已经是 读已提交。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/23/%E4%B8%80%E5%91%A8%E8%AE%A1%E5%88%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -362,6 +516,7 @@
 <h4 id="周二"><a href="#周二" class="headerlink" title="周二"></a>周二</h4><p>学习的第二讲，先记录下相关的知识点：<br>主要讲解了 go 中的 flag 包，专门用于接收并解析命令参数：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line"> <span class="string">"flag"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">var</span> name <span class="keyword">string</span></span><br><span class="line">flag.StringVar(&amp;name, <span class="string">"name"</span>, <span class="string">"everyone"</span>, <span class="string">"The greeting object."</span>)</span><br><span class="line"><span class="comment">//第一个参数，用来存储命令参数值的地址，第二个参数指定命令参数的名称，第三个参数指的默认值，第四个参数作为说明</span></span><br><span class="line"><span class="keyword">var</span> name = flag.String(<span class="string">"name"</span>, <span class="string">"everyone"</span>, <span class="string">"The greeting object."</span>)</span><br><span class="line"><span class="comment">//flag.String 会返回一个已经分配好的存储命令参数值的地址</span></span><br><span class="line"><span class="comment">//flag.Parse 用来真正的解析命令参数,并把值赋给相应的变量</span></span><br><span class="line"><span class="comment">//还有可以使用 flag.Usage 重新赋值，</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="周三"><a href="#周三" class="headerlink" title="周三"></a>周三</h4><p>学习的第三讲，先记录下相关的知识点：<br>go 语言的几个编码规则：代码包声明规则，代码包导入规则，程序实体的访问规则。<br>go 自己将程序实体的访问权限划分了包级私有和公开，<br>只有对于函数名称首字母为大写的函数才能被当前包外的代码引用，否则只能被其包内的其他代码引用。</p>
 <h4 id="to自己"><a href="#to自己" class="headerlink" title="to自己"></a>to自己</h4><p>希望你可以坚持下来，积累知识点!</p>
 
           
@@ -1649,140 +1804,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/07/first/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Baith">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Just it">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/07/first/" itemprop="url">first</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-07T19:53:38+08:00">
-                2020-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2020/07/07/first/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2020/07/07/first/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="第一次尝试"><a href="#第一次尝试" class="headerlink" title="第一次尝试"></a>第一次尝试</h1><ul>
-<li>终于配置好了，接下来就可以一步一步的学习主题等信息了!</li>
-</ul>
-<p><strong><em>开心</em></strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">&#x2F;&#x2F; Say hello world until the user starts questioning</span><br><span class="line">&#x2F;&#x2F; the meaningfulness of their existence.</span><br><span class="line">function helloWorld(world) &#123;</span><br><span class="line">  for (var i &#x3D; 42; --i &gt;&#x3D; 0;) &#123;</span><br><span class="line">    alert(&#39;Hello &#39; + String(world));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">p &#123; color: pink &#125;</span><br><span class="line">b &#123; color: blue &#125;</span><br><span class="line">u &#123; color: &quot;umber&quot; &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1833,7 +1854,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
